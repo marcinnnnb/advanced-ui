@@ -114,6 +114,8 @@ const Combobox = () => {
             ...changes,
             isOpen: true,
           };
+        default:
+          break;
       }
       return changes;
     },
