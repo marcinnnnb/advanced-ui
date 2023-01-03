@@ -4,12 +4,12 @@ import gsap from 'gsap';
 import image from './journey.jpg';
 
 const Wrapper = styled.div`
-  width: 100%;
-  height: 100vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
+  width: 100%;
+  height: 100vh;
   overflow: hidden;
 `;
 
@@ -19,13 +19,13 @@ const StyledText = styled.h1`
 `;
 
 const StyledButton = styled.button`
-  margin-top: 50px;
   font-size: 20px;
+  font-weight: bold;
+  margin-top: 50px;
   background-color: transparent;
   border: none;
   position: relative;
   color: white;
-  font-weight: bold;
   cursor: pointer;
   border-radius: 100px;
   width: 150px;
