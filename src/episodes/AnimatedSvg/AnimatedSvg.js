@@ -1,4 +1,4 @@
-import React from 'react';
+import { useRef, useEffect } from 'react';
 import gsap from 'gsap';
 import styled from 'styled-components';
 import { ReactComponent as HeroImage } from 'assets/images/hero.svg';
@@ -10,17 +10,16 @@ const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
   background-color: #f1f1f1;
-
   svg {
     width: 400px;
   }
 `;
 
 const AnimatedSvg = () => {
-  const image = React.useRef(null);
-  const tl = React.useRef(null);
+  const image = useRef(null);
+  const tl = useRef(null);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const { current: e } = image;
     const groundShadow = e.getElementById('ground-shadow');
     const ground = e.getElementById('ground');
