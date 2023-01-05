@@ -1,6 +1,6 @@
 import React from 'react';
-import styled, { keyframes } from 'styled-components';
-import { ButtonB } from '../FancyButtons/FancyButtons';
+import styled, {keyframes} from 'styled-components';
+import {ButtonB} from "../FancyButtons/FancyButtons";
 
 const MoveUpStart = keyframes`
   to {
@@ -33,11 +33,11 @@ const SlideLeftStart = keyframes`
 `;
 
 const Wrapper = styled.div`
+  width: 100%;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  height: 100vh;
 
   &::before {
     content: '';
@@ -69,7 +69,7 @@ const StyledText = styled.span`
   &::before {
     display: block;
     animation: ${MoveUpStart} 0.5s forwards, ${MoveUpEnd} 0.5s 1.5s forwards;
-    content: '${({ content }) => (content ? content : '')}';
+    content: '${({content}) => content ? content : ''}';
   }
 `;
 
@@ -82,28 +82,28 @@ const StyledButton = styled(ButtonB)`
 `;
 
 const Demo1 = () => {
-  const [toggle, setToggle] = React.useState(true);
-  const [content, setContent] = React.useState(['Start', 'here']);
+    const [toggle, setToggle] = React.useState(true);
+    const [content, setContent] = React.useState(['Start', 'here'])
 
-  const handleClick = () => {
-    setToggle(!toggle);
-  };
+    const handleClick = () => {
+        setToggle(!toggle);
+    }
 
-  React.useEffect(() => {
-    setTimeout(() => {
-      return toggle ? setContent(['Start', 'here']) : setContent(['End', 'there']);
-    }, 600);
-  }, [toggle]);
+    React.useEffect(() => {
+        setTimeout(() => {
+            return toggle ? setContent(['Start', 'here']) : setContent(['End', 'there'])
+        }, 600)
+    }, [toggle])
 
-  return (
-    <Wrapper key={toggle ? 1 : 2}>
-      <TextContainer>
-        <StyledText content={content[0]} />
-        <StyledText content={content[1]} />
-      </TextContainer>
-      <StyledButton onClick={handleClick}>Next</StyledButton>
-    </Wrapper>
-  );
+    return (
+        <Wrapper key={toggle ? 1 : 2}>
+            <TextContainer>
+                <StyledText content={content[0]}/>
+                <StyledText content={content[1]}/>
+            </TextContainer>
+            <StyledButton onClick={handleClick}>Next</StyledButton>
+        </Wrapper>
+    )
 };
 
 export default Demo1;

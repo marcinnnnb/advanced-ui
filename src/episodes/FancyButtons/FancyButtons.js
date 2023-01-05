@@ -1,5 +1,6 @@
 import React from 'react';
-import styled, { keyframes } from 'styled-components';
+import styled, {keyframes} from 'styled-components';
+
 
 const moveUpInitial = keyframes`
   to {
@@ -17,10 +18,10 @@ const moveUpEnd = keyframes`from {
 
 const Wrapper = styled.div`
   display: flex;
-  flex-direction: column;
   justify-content: flex-start;
   align-items: center;
   padding-top: 200px;
+  flex-direction: column;
 `;
 
 const StyledButton = styled.button`
@@ -38,8 +39,8 @@ const ButtonA = styled(StyledButton)`
   border: 3px solid black;
   position: relative;
   overflow: hidden;
-  transition: color 0.4s cubic-bezier(0.61, 0.07, 0.23, 0.89);
-
+  transition: color .4s cubic-bezier(.61,.07,.23,.89);
+  
   &::after {
     position: absolute;
     content: '';
@@ -51,14 +52,14 @@ const ButtonA = styled(StyledButton)`
     transform: translate(-50%, -50%) scale(0);
     border-radius: 300px;
     transform-origin: 50%;
-    transition: transform 0.4s cubic-bezier(0.61, 0.07, 0.23, 0.89);
+    transition: transform 0.4s cubic-bezier(.61,.07,.23,.89);
     z-index: -1;
   }
-
+  
   &:hover::after {
     transform: translate(-50%, -50%) scale(1);
   }
-
+  
   &:hover {
     color: white;
   }
@@ -68,8 +69,8 @@ export const ButtonB = styled(StyledButton)`
   border: 3px solid black;
   position: relative;
   overflow: hidden;
-  transition: color 0.4s cubic-bezier(0.61, 0.07, 0.23, 0.89);
-
+  transition: color .4s cubic-bezier(.61,.07,.23,.89);
+  
   &::after {
     position: absolute;
     content: '';
@@ -80,14 +81,14 @@ export const ButtonB = styled(StyledButton)`
     top: 0;
     transform: scaleX(0);
     transform-origin: 0 50%;
-    transition: transform 0.4s cubic-bezier(0.61, 0.07, 0.23, 0.89);
+    transition: transform 0.4s cubic-bezier(.61,.07,.23,.89);
     z-index: -1;
   }
-
+  
   &:hover::after {
     transform: scaleX(1);
   }
-
+  
   &:hover {
     color: white;
   }
@@ -99,7 +100,7 @@ const ButtonC = styled(StyledButton)`
   position: relative;
   overflow: hidden;
   box-shadow: inset 0 0 0 3px black;
-
+  
   span {
     position: relative;
     z-index: 2;
@@ -115,12 +116,12 @@ const ButtonC = styled(StyledButton)`
     top: 50%;
     transform: translate(-50%, -50%) scale(1) rotate(45deg);
     transform-origin: 50%;
-    transition: transform 0.5s cubic-bezier(0.61, 0.07, 0.23, 0.89);
+    transition: transform 0.5s cubic-bezier(.61,.07,.23,.89);
     z-index: 1;
   }
 
   &:hover::after {
-    transform: translate(-50%, -50%) scale(0) rotate(45deg);
+    transform: translate(-50%, -50%) scale(0) rotate(45deg); 
   }
 `;
 
@@ -130,7 +131,7 @@ const ButtonD = styled(StyledButton)`
   position: relative;
   border: 3px solid black;
   overflow: hidden;
-
+  
   span {
     position: absolute;
     width: 100%;
@@ -144,25 +145,21 @@ const ButtonD = styled(StyledButton)`
   }
 
   span:nth-child(1) {
-    transform: translateY(
-      ${({ isLoading, isSuccess }) => {
+    transform: translateY(${({isLoading, isSuccess}) => {
         if (isLoading) return '-100%';
         if (isSuccess) return '-100%';
         return '0%';
-      }}
-    );
+    }});
   }
-
+  
   span:nth-child(2) {
-    transform: translateY(
-      ${({ isLoading, isSuccess }) => {
-        if (isLoading) return '0%';
-        if (isSuccess) return '-100%';
-        return '100%';
-      }}
-    );
+    transform: translateY(${({isLoading, isSuccess}) => {
+      if (isLoading) return '0%';
+      if (isSuccess) return '-100%';
+      return '100%';
+    }});
     color: white;
-
+    
     &::before {
       background-color: black;
       width: 100%;
@@ -172,20 +169,18 @@ const ButtonD = styled(StyledButton)`
       left: 0;
       top: 0;
       transition: transform 2.5s 0.5s ease-in-out;
-      transform: scaleX(${({ isLoading }) => (isLoading ? '1' : '0')});
+      transform: scaleX(${({isLoading}) => isLoading ? '1' : '0'});
       transform-origin: 0;
       z-index: -1;
     }
   }
 
   span:nth-child(3) {
-    transform: translateY(
-      ${({ isLoading, isSuccess }) => {
-        if (isLoading) return '100%';
-        if (isSuccess) return '0%';
-        return '200%';
-      }}
-    );
+    transform: translateY(${({isLoading, isSuccess}) => {
+      if (isLoading) return '100%';
+      if (isSuccess) return '0%';
+      return '200%';
+    }});
   }
 `;
 
@@ -268,37 +263,31 @@ const ButtonF = styled(StyledButton)`
 `;
 
 const FancyButtons = () => {
-  const [isLoading, setIsLoading] = React.useState(false);
-  const [isSuccess, setIsSuccess] = React.useState(false);
+    const [isLoading, setIsLoading] = React.useState(false);
+    const [isSuccess, setIsSuccess] = React.useState(false);
 
-  const handleClick = () => {
-    setIsLoading(true);
-    setTimeout(() => {
-      setIsSuccess(true);
-      setIsLoading(false);
-    }, 3000);
-  };
+    const handleClick = () => {
+        setIsLoading(true);
+        setTimeout(() => {
+            setIsSuccess(true);
+            setIsLoading(false);
+        }, 3000)
+    }
 
-  return (
-    <Wrapper>
-      <ButtonA>Click me</ButtonA>
-      <ButtonB>Submit</ButtonB>
-      <ButtonC>
-        <span>Submit</span>
-      </ButtonC>
-      <ButtonD isLoading={isLoading} isSuccess={isSuccess} onClick={handleClick}>
-        <span>Submit</span>
-        <span>Loading</span>
-        <span>Thank you!</span>
-      </ButtonD>
-      <ButtonE>
-        <span>Next</span>
-      </ButtonE>
-      <ButtonF>
-        <span>Next</span>
-      </ButtonF>
-    </Wrapper>
-  );
+    return (
+        <Wrapper>
+            <ButtonA>Click me</ButtonA>
+            <ButtonB>Submit</ButtonB>
+            <ButtonC><span>Submit</span></ButtonC>
+            <ButtonD isLoading={isLoading} isSuccess={isSuccess} onClick={handleClick}>
+                <span>Submit</span>
+                <span>Loading</span>
+                <span>Thank you!</span>
+            </ButtonD>
+            <ButtonE><span>Next</span></ButtonE>
+            <ButtonF><span>Next</span></ButtonF>
+        </Wrapper>
+    )
 };
 
-export default FancyButtons;
+export default FancyButtons
