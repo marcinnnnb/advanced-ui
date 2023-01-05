@@ -25,24 +25,19 @@ const Content = styled.div`
 const StyledLogo = styled(Logo)`
   width: 50px;
   height: auto;
-`;
+`
 
 const Welcome = () => {
-  return (
-    <Wrapper>
-      <Content>
-        <StyledLogo />
-        <h1>Hello Roman – Zaawansowany UI</h1>
-        <p>
-          W tym projekcie znajdziesz wszystkie przykłady, które powstały w kursie Zaawansowany UI. Możesz nawigować
-          pomiędzy nimi używając menu po prawej stronie.
-        </p>
-        <p>
-          <strong>Powodzenia i owocnej nauki!</strong>
-        </p>
-      </Content>
-    </Wrapper>
-  );
+    return (
+        <Wrapper>
+            <Content>
+            <StyledLogo />
+            <h1>Hello Roman – Zaawansowany UI</h1>
+            <p>W tym projekcie znajdziesz wszystkie przykłady, które powstały w kursie Zaawansowany UI. Możesz nawigować pomiędzy nimi używając menu po prawej stronie.</p>
+            <p><strong>Powodzenia i owocnej nauki!</strong></p>
+            </Content>
+        </Wrapper>
+    )
 };
 
-export default Welcome;
+export default Welcome

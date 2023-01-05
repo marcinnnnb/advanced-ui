@@ -1,7 +1,7 @@
-import { useRef, useEffect } from 'react';
+import React from 'react';
 import gsap from 'gsap';
 import styled from 'styled-components';
-import { ReactComponent as HeroImage } from 'assets/images/hero.svg';
+import {ReactComponent as HeroImage} from 'assets/images/hero.svg';
 
 const Wrapper = styled.div`
   width: 100%;
@@ -10,17 +10,18 @@ const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
   background-color: #f1f1f1;
+
   svg {
     width: 400px;
   }
 `;
 
 const AnimatedSvg = () => {
-  const image = useRef(null);
-  const tl = useRef(null);
+  const image = React.useRef(null);
+  const tl = React.useRef(null);
 
-  useEffect(() => {
-    const { current: e } = image;
+  React.useEffect(() => {
+    const {current: e} = image;
     const groundShadow = e.getElementById('ground-shadow');
     const ground = e.getElementById('ground');
     const phone = e.getElementById('phone');
@@ -81,36 +82,36 @@ const AnimatedSvg = () => {
         ...windowInnerElements,
         ...arrow3Dots,
       ],
-      { autoAlpha: 0 }
+      {autoAlpha: 0}
     );
 
     tl.current
-      .set([groundShadow, ground], { y: '+=220' })
-      .set(cursor, { y: '+=400', x: '-=100' })
-      .set(phone, { y: '-=100', x: '+=100' })
-      .to([groundShadow, ground, cursor], { autoAlpha: 1, duration: 1 })
-      .to(cursor, { duration: 1, y: '-=400', x: '+=100' })
-      .to([ground, groundShadow], { duration: 1, y: '-=220', stagger: 0.2 }, '-=0.5')
-      .to(phone, { duration: 0.5, autoAlpha: 1, y: '+=100', x: '-=100' }, '-=1.5')
-      .to(cursor, { duration: 0.5, x: '+=250', y: '+=25' })
-      .to(power, { duration: 0.2, fill: '#00df69' })
-      .to(cursor, { duration: 0.5, x: '-=250', y: '-=25' }, '+=0.5')
-      .set(linearFirst, { scaleY: 0, transformOrigin: '0 0' })
-      .set(scaleElements, { scale: 0.4, transformOrigin: '0 0' })
-      .to(linearFirst, { duration: 1, autoAlpha: 1, scaleY: 1 }, 'cursorDone')
-      .to(greenBrick, { duration: 0.4, autoAlpha: 1 }, '-=0.5')
-      .to(greenBrickShadow, { duration: 1, autoAlpha: 1 }, '-=0.3')
-      .to(scaleElements, { duration: 1, autoAlpha: 1 }, '-=0.5')
-      .to(linearSecond, { duration: 0.4, autoAlpha: 1 }, '-=1')
-      .to(scaleElements, { duration: 1.2, scale: 1 }, '-=0.5')
-      .to(violetBrick, { duration: 0.4, autoAlpha: 1 }, '-=1.2')
-      .to(violetBrickShadow, { duration: 1, autoAlpha: 1 }, '-=1')
-      .to(linearThird, { duration: 0.4, autoAlpha: 1 }, '-=1')
-      .fromTo(window, { duration: 1, autoAlpha: 0, x: '-=50' }, { autoAlpha: 1, x: '+=50' })
-      .fromTo(windowInnerElements, { duration: 1.2, autoAlpha: 0, x: '-=30' }, { autoAlpha: 1, x: '+=30' }, '+=0.3')
+      .set([groundShadow, ground], {y: '+=220'})
+      .set(cursor, {y: '+=400', x: '-=100'})
+      .set(phone, {y: '-=100', x: '+=100'})
+      .to([groundShadow, ground, cursor], {autoAlpha: 1, duration: 1})
+      .to(cursor, {duration: 1, y: '-=400', x:'+=100'})
+      .to([ground,groundShadow], {duration: 1, y:'-=220', stagger: 0.2}, '-=0.5')
+      .to(phone, {duration: 0.5, autoAlpha: 1, y: '+=100', x: '-=100'}, '-=1.5')
+      .to(cursor, {duration: 0.5, x: '+=250', y: '+=25'})
+      .to(power, {duration: 0.2, fill: '#00df69'})
+      .to(cursor, {duration: 0.5, x: '-=250', y: '-=25'}, '+=0.5')
+      .set(linearFirst, {scaleY: 0, transformOrigin: '0 0'})
+      .set(scaleElements, {scale: 0.4, transformOrigin: '0 0'})
+      .to(linearFirst, {duration: 1, autoAlpha: 1, scaleY: 1}, 'cursorDone')
+      .to(greenBrick, {duration: 0.4, autoAlpha: 1}, '-=0.5')
+      .to(greenBrickShadow, {duration: 1, autoAlpha: 1}, '-=0.3')
+      .to(scaleElements, {duration: 1, autoAlpha: 1}, '-=0.5')
+      .to(linearSecond, {duration: 0.4, autoAlpha: 1}, '-=1')
+      .to(scaleElements, {duration: 1.2, scale: 1}, '-=0.5')
+      .to(violetBrick, {duration: 0.4, autoAlpha: 1}, '-=1.2')
+      .to(violetBrickShadow, {duration: 1, autoAlpha: 1}, '-=1')
+      .to(linearThird, {duration: 0.4, autoAlpha: 1}, '-=1')
+      .fromTo(window, {duration: 1, autoAlpha: 0, x: '-=50'}, {autoAlpha: 1, x: '+=50'})
+      .fromTo(windowInnerElements, {duration: 1.2, autoAlpha: 0, x: '-=30'}, {autoAlpha: 1, x: '+=30'}, '+=0.3')
       .fromTo(
         arrow3Dots,
-        { autoAlpha: 0, x: '-=50', y: '+=20' },
+        {autoAlpha: 0, x: '-=50', y: '+=20'},
         {
           autoAlpha: 1,
           x: '+=50',
@@ -122,7 +123,7 @@ const AnimatedSvg = () => {
       .fromTo(
         listRight[0],
 
-        { autoAlpha: 0, x: '+=20', y: '-=20' },
+        {autoAlpha: 0, x: '+=20', y: '-=20'},
         {
           duration: 0.4,
           autoAlpha: 1,
@@ -134,7 +135,7 @@ const AnimatedSvg = () => {
       .fromTo(
         listRight[1],
 
-        { autoAlpha: 0, x: '-=50', y: '+=20' },
+        {autoAlpha: 0, x: '-=50', y: '+=20'},
         {
           duration: 0.4,
           autoAlpha: 1,
@@ -146,7 +147,7 @@ const AnimatedSvg = () => {
       .fromTo(
         listRight[2],
 
-        { autoAlpha: 0, x: '-=30', y: '+=20' },
+        {autoAlpha: 0, x: '-=30', y: '+=20'},
         {
           duration: 0.4,
           autoAlpha: 1,
@@ -158,7 +159,7 @@ const AnimatedSvg = () => {
       .fromTo(
         listRight[3],
 
-        { autoAlpha: 0, x: '+=50', y: '+=50' },
+        {autoAlpha: 0, x: '+=50', y: '+=50'},
         {
           duration: 0.4,
           autoAlpha: 1,
@@ -170,7 +171,7 @@ const AnimatedSvg = () => {
       .fromTo(
         listRight[4],
 
-        { autoAlpha: 0, x: '-=25', y: '+=40' },
+        {autoAlpha: 0, x: '-=25', y: '+=40'},
         {
           duration: 0.4,
           autoAlpha: 1,
@@ -182,7 +183,7 @@ const AnimatedSvg = () => {
       .fromTo(
         listRight[5],
 
-        { autoAlpha: 0, x: '+=60', y: '-=50' },
+        {autoAlpha: 0, x: '+=60', y: '-=50'},
         {
           duration: 0.4,
           autoAlpha: 1,
@@ -191,10 +192,10 @@ const AnimatedSvg = () => {
         },
         '-=0.1'
       )
-      .to(listShadow, { duration: 0.5, autoAlpha: 1 }, '-=1')
+      .to(listShadow, {duration: 0.5, autoAlpha: 1}, '-=1')
       .fromTo(
         logo,
-        { autoAlpha: 0, x: '+=200', y: '-=100' },
+        {autoAlpha: 0, x: '+=200', y: '-=100'},
         {
           duration: 1.5,
           autoAlpha: 1,
@@ -203,13 +204,15 @@ const AnimatedSvg = () => {
         },
         '-=0.5'
       );
-  }, []);
+
+
+  }, [])
 
   return (
     <Wrapper>
-      <HeroImage ref={image} />
+      <HeroImage ref={image}/>
     </Wrapper>
-  );
+  )
 };
 
-export default AnimatedSvg;
+export default AnimatedSvg

@@ -1,6 +1,6 @@
 import React from 'react';
-import { data } from './data';
-import styled, { keyframes } from 'styled-components';
+import {data} from './data';
+import styled, {keyframes} from "styled-components";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -57,7 +57,7 @@ const StyledDetails = styled.details`
       transform: rotate(-90deg);
     }
   }
-
+  
   // Firefox animation workaround
   &[open] div {
     display: block;
@@ -81,32 +81,31 @@ const StyledDetails = styled.details`
     }
   }
 
-  @media not all and (min-resolution: 0.001dpcm) {
-    @supports (-webkit-appearance: none) and (stroke-color: transparent) {
-      summary::-webkit-details-marker {
-        display: none;
-      }
-
-      summary:focus {
-        outline: 3px solid #f9e852;
-      }
+  @media not all and (min-resolution:.001dpcm)
+  { @supports (-webkit-appearance:none) and (stroke-color:transparent) {
+    summary::-webkit-details-marker {
+      display: none;
     }
-  }
+    
+    summary:focus {
+      outline: 3px solid #f9e852;
+    }
+  }}
 `;
 
 const AccordionFaq = () => {
-  return (
-    <Wrapper>
-      {data.map((item) => (
-        <StyledDetails key={item.title}>
-          <summary>{item.title}</summary>
-          <div>
-            <p>{item.content}</p>
-          </div>
-        </StyledDetails>
-      ))}
-    </Wrapper>
-  );
+    return (
+        <Wrapper>
+            {data.map(item => (
+                <StyledDetails key={item.title}>
+                    <summary>{item.title}</summary>
+                    <div>
+                        <p>{item.content}</p>
+                    </div>
+                </StyledDetails>
+            ))}
+        </Wrapper>
+    )
 };
 
 export default AccordionFaq;

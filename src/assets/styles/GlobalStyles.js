@@ -1,10 +1,10 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle } from 'styled-components'
 
 export const GlobalStyle = createGlobalStyle`
   html {
     box-sizing: border-box;
   }
-
+  
   body {
     padding: 0;
     margin: 0;
@@ -12,10 +12,10 @@ export const GlobalStyle = createGlobalStyle`
     width: 100%;
     overflow-x: hidden;
   }
-
+  
   *, *::after, *::before {
     box-sizing: inherit;
     font-family: 'IBM Plex Mono', monospace;
     color: black;
   }
-`;
+`

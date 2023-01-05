@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import styled, { keyframes } from 'styled-components';
+import React, {useState} from 'react';
+import styled, {keyframes} from 'styled-components';
 
 const AppearAnimation = keyframes`
   from {
@@ -28,7 +28,7 @@ const Content = styled.div`
 `;
 
 const Navigation = styled.nav`
-  display: ${({ isOpen }) => (isOpen ? 'block' : 'none')};
+  display: ${({isOpen}) => isOpen ? 'block' : 'none'};
   width: 100%;
   height: 100vh;
   background-color: white;
@@ -43,7 +43,7 @@ const Navigation = styled.nav`
     border-right: 3px solid black;
     animation: none;
     transition: transform 0.3s ease-in-out;
-    transform: translateX(${({ isOpen }) => (isOpen ? '0' : '-100%')});
+    transform: translateX(${({isOpen}) => isOpen ? '0' : '-100%'});
   }
 
   ul {
@@ -86,7 +86,7 @@ const MenuToggleButton = styled.button`
     left: 0;
     border-left: none;
     transition: transform 0.3s ease-in-out;
-    transform: translateX(${({ isOpen }) => (isOpen ? '300px' : '0')});
+    transform: translateX(${({isOpen}) => isOpen ? '300px' : '0'});
   }
 
   span:first-child {
@@ -95,11 +95,10 @@ const MenuToggleButton = styled.button`
     position: absolute;
     top: 0;
     left: 0;
-    transform: translateX(${({ isOpen }) => (isOpen ? 'calc(-100% - 2px)' : 0)});
+    transform: translateX(${({isOpen}) => isOpen ? 'calc(-100% - 2px)' : 0});
     transition: transform ease-in-out 0.3s;
 
-    &::before,
-    &::after {
+    &::before, &::after {
       position: absolute;
       content: '';
       width: 17px;
@@ -125,11 +124,10 @@ const MenuToggleButton = styled.button`
     position: absolute;
     top: 0;
     left: calc(100% + 2px);
-    transform: translateX(${({ isOpen }) => (isOpen ? 'calc(-100% - 2px)' : 0)});
+    transform: translateX(${({isOpen}) => isOpen ? 'calc(-100% - 2px)' : 0});
     transition: transform ease-in-out 0.3s;
 
-    &::before,
-    &::after {
+    &::before, &::after {
       position: absolute;
       content: '';
       width: 25px;
@@ -150,51 +148,31 @@ const MenuToggleButton = styled.button`
 `;
 
 const Sidebar = () => {
-  const [isOpen, setIsOpen] = useState(false);
+    const [isOpen, setIsOpen] = useState(false);
 
-  return (
-    <>
-      <MenuToggleButton isOpen={isOpen} onClick={() => setIsOpen((prevState) => !prevState)}>
-        <span />
-        <span />
-      </MenuToggleButton>
-      <Navigation isOpen={isOpen}>
-        <ul>
-          <li>
-            <a tabIndex={isOpen ? null : '-1'} href="/">
-              Lorem
-            </a>
-          </li>
-          <li>
-            <a tabIndex={isOpen ? null : '-1'} href="/">
-              Ipsum
-            </a>
-          </li>
-          <li>
-            <a tabIndex={isOpen ? null : '-1'} href="/">
-              Dolor
-            </a>
-          </li>
-          <li>
-            <a tabIndex={isOpen ? null : '-1'} href="/">
-              Sit
-            </a>
-          </li>
-          <li>
-            <a tabIndex={isOpen ? null : '-1'} href="/">
-              Amet
-            </a>
-          </li>
-        </ul>
-      </Navigation>
-      <Content>
-        <div />
-        <div />
-        <div />
-        <div />
-      </Content>
-    </>
-  );
+    return (
+        <>
+            <MenuToggleButton isOpen={isOpen} onClick={() => setIsOpen(prevState => !prevState)}>
+                <span/>
+                <span/>
+            </MenuToggleButton>
+            <Navigation isOpen={isOpen}>
+                <ul>
+                    <li><a tabIndex={isOpen ? null : '-1'} href="/">Lorem</a></li>
+                    <li><a tabIndex={isOpen ? null : '-1'} href="/">Ipsum</a></li>
+                    <li><a tabIndex={isOpen ? null : '-1'} href="/">Dolor</a></li>
+                    <li><a tabIndex={isOpen ? null : '-1'} href="/">Sit</a></li>
+                    <li><a tabIndex={isOpen ? null : '-1'} href="/">Amet</a></li>
+                </ul>
+            </Navigation>
+            <Content>
+                <div/>
+                <div/>
+                <div/>
+                <div/>
+            </Content>
+        </>
+    )
 };
 
-export default Sidebar;
+export default Sidebar
